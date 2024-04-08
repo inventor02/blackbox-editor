@@ -9,12 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "preact": "^10.19.6"
+    "bootstrap": "^5.3.3",
+    "preact": "^10.19.6",
+    "react-bootstrap": "^2.10.2",
+    "yaml-edit-preact": "github:inventor02/yaml-edit"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.8.2",
     "typescript": "^5.2.2",
-    "vite": "^5.2.0",
-    "yaml-edit-preact": "github:inventor02/yaml-edit"
+    "vite": "^5.2.0"
   }
 }
