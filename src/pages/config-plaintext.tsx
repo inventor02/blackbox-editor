@@ -2,10 +2,9 @@ import { ChangeEvent } from "preact/compat";
 import { useEffect, useState } from "preact/hooks";
 import { getConfig, postConfig } from "../api";
 import { YamlEditor } from "../components/editor";
-import { Button, ButtonGroup } from "react-bootstrap";
-import { Link } from "wouter";
+import { Button, ButtonGroup, Form } from "react-bootstrap";
 
-export function Config() {
+export function ConfigPlainText() {
     let [config, setConfig] = useState("");
     let [alert, setAlert] = useState("");
 
@@ -14,8 +13,9 @@ export function Config() {
             .then((data) => setConfig(data));
     }, []);
 
-    const handleYamlChange = (newYaml: string) => {
-        setConfig(newYaml);
+    const handleConfigChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+        console.log((event.target as HTMLTextAreaElement).value);
+        setConfig((event.target as HTMLTextAreaElement).value);
     };
 
     const save = () => {
@@ -26,14 +26,15 @@ export function Config() {
     return (
         <div>
             <h1>Editor</h1>
-            
+
             { alert.length > 0 && (<div className="alert alert-success">{alert}</div>) }
-            
-            <YamlEditor initialYaml={config} onChange={handleYamlChange}/>
+
+            <Form.Control as="textarea" rows={3} value={config} onChange={handleConfigChange} />
+
+            <br />
 
             <ButtonGroup>
                 <Button className="btn-primary" onClick={save}>Save</Button>
-                <Link href="/config/plaintext" className="btn btn-secondary">Edit Plain Text</Link>
             </ButtonGroup>
         </div>
     );

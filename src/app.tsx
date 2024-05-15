@@ -1,9 +1,9 @@
 import "./app.css";
-import { Router, Route, Link } from "preact-router";
 import { Config } from "./pages/config";
-import { Log } from "./pages/log";
 import { ButtonGroup, Col, Row } from "react-bootstrap";
 import { killAll } from "./api";
+import { Link, Route, Switch } from "wouter";
+import { ConfigPlainText } from "./pages/config-plaintext";
 
 function Home() {
   const disableWebctl = () => {
@@ -45,9 +45,9 @@ export function App() {
                 <Link href="/config" className="btn btn-primary">
                   Configuration
                 </Link>
-                <Link href="/log" className="btn btn-primary">
+                {/* <Link href="/log" className="btn btn-primary">
                   Data Management
-                </Link>
+                </Link> */}
               </ButtonGroup>
             </nav>
           </Col>
@@ -55,11 +55,12 @@ export function App() {
 
         <hr />
 
-        <Router>
+        <Switch>
           <Route path="/" component={Home} />
           <Route path="/config" component={Config} />
-          <Route path="/log" component={Log} />
-        </Router>
+          <Route path="/config/plaintext" component={ConfigPlainText} />
+          {/* <Route path="/log" component={Log} /> */}
+        </Switch>
       </div>
     </>
   );
