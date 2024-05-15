@@ -1,7 +1,6 @@
 import { ChangeEvent } from "preact/compat";
 import { useEffect, useState } from "preact/hooks";
 import { getConfig, postConfig } from "../api";
-import { YamlEditor } from "../components/editor";
 import { Button, ButtonGroup, Form } from "react-bootstrap";
 
 export function ConfigPlainText() {

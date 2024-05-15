@@ -1,4 +1,3 @@
-import { ChangeEvent } from "preact/compat";
 import { useEffect, useState } from "preact/hooks";
 import { getConfig, postConfig } from "../api";
 import { YamlEditor } from "../components/editor";
@@ -28,7 +27,7 @@ export function Config() {
             <h1>Editor</h1>
             
             { alert.length > 0 && (<div className="alert alert-success">{alert}</div>) }
-            
+
             <YamlEditor initialYaml={config} onChange={handleYamlChange}/>
 
             <ButtonGroup>
